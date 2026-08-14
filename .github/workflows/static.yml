@@ -29,8 +29,11 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Checkout and setup environment
+        uses: MetaMask/action-checkout-and-setup@v1
+        with:
+          is-high-risk-environment: false
+          submodules: 'recursive'
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
